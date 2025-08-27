@@ -5,7 +5,7 @@ export const projectsData = [
     id: 1,
     title: 'Plataforma de E-commerce',
     description: 'Uma plataforma de e-commerce responsiva e completa, com carrinho de compras, autenticação de usuários e integração com API de pagamentos.',
-    gif: '/gifs/ecommerce.gif', // Caminho para o seu GIF na pasta `public`
+    gif: '/ecommerce.gif', // Caminho para o seu GIF na pasta `public`
     repoLink: 'https://github.com/seu-usuario/ecommerce-repo',
     technologies: ['React', 'Node.js', 'Redux', 'MongoDB']
   },

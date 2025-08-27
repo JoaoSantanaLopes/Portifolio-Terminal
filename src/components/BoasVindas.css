@@ -1,0 +1,58 @@
+/* src/components/BoasVindas.css */
+
+.welcome-container {
+  padding: 1rem 1.5rem;
+  line-height: 1.8;
+  color: #a0aec0; /* Cor de texto padrão (cinza claro) */
+}
+
+/* Estilos para a animação */
+.whoami-animation {
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 1.1rem;
+  white-space: pre-line; /* Permite quebras de linha com \n */
+  margin-bottom: 2rem;
+}
+
+/* Cor verde para o nome e cargo */
+.whoami-animation span:last-child {
+  color: #00ff9d;
+  font-weight: bold;
+}
+
+/* Estilos para a parte estática */
+.welcome-title {
+  color: #ffbd2e; /* Amarelo/Laranja */
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #4a5568;
+  margin-bottom: 1.5rem;
+}
+
+.info-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.info-list li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  color: #e2e8f0; /* Texto principal um pouco mais claro */
+}
+
+.info-list .icon {
+  font-size: 1.2rem;
+}
+
+.navegue-text {
+  color: #00ff9d;
+  font-style: italic;
+}

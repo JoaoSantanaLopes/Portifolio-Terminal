@@ -3,52 +3,34 @@
 import React, { useState } from 'react';
 import Terminal, { ColorMode, TerminalInput, TerminalOutput } from 'react-terminal-ui';
 import './index.css';
+
+// Importa a lista de comandos do arquivo central
+import { commandList } from './commands';
+
+// Importação dos componentes de comando
 import Projetos from './components/Projetos';
 import Experiencias from './components/Experiencias';
 import SobreMim from './components/SobreMim';
+import Ajuda from './components/Ajuda';
+import Contato from './components/Contato';
+import BoasVindas from './components/BoasVindas';
 
-const commandList = {
-  ajuda: {
-    name: 'ajuda',
-    aliases: ['help'],
-    description: 'Mostra esta lista de comandos disponíveis.',
-  },
-  sobre: {
-    name: 'sobre',
-    aliases: ['sobremim', 'aboutme', 'about'],
-    description: 'Mostra uma breve descrição sobre mim.',
-  },
-  projetos: {
-    name: 'projetos',
-    aliases: ['projects'],
-    description: 'Exibe os principais projetos em que trabalhei.',
-  },
-  experiencias: {
-    name: 'experiencias',
-    aliases: ['experience', 'xp'],
-    description: 'Mostra minha trajetória profissional e experiências.',
-  },
-  contato: {
-    name: 'contato',
-    aliases: ['contact'],
-    description: 'Exibe minhas informações de contato.',
-  },
-  limpar: {
-    name: 'limpar',
-    aliases: ['clear', 'cls'],
-    description: 'Limpa o histórico do terminal.',
-  }
-};
-
+// Importação de componentes da UI
+import LanguageSwitcher from './components/LanguageSwitcher';
 
 function App() {
+  // Função para gerar a mensagem de boas-vindas
+  const getWelcomeMessage = () => <BoasVindas key="welcome" />;
+
+  // 2. O ESTADO INICIAL AGORA USA A NOVA MENSAGEM
   const [terminalLineData, setTerminalLineData] = useState([
-    <TerminalOutput key="welcome-line">Bem-vindo! Digite `ajuda` (ou `help`) para começar.</TerminalOutput>
+    getWelcomeMessage()
   ]);
 
   function handleInput(input) {
     let newLines = [...terminalLineData];
-    newLines.push(<TerminalInput key={`input-${newLines.length}`}>{input}</TerminalInput>);
+    // Adicionamos o prompt junto com o input para um visual mais autêntico
+    newLines.push(<TerminalInput key={`input-${newLines.length}`}>{myPrompt} {input}</TerminalInput>);
 
     const args = input.toLowerCase().trim().split(' ');
     const userInput = args[0];
@@ -61,31 +43,12 @@ function App() {
 
     if (command) {
       switch (command.name) {
-        // 3. ADICIONE O NOVO CASE AQUI
         case 'sobre':
           response = <SobreMim />;
           break;
         
         case 'ajuda':
-          response = (
-            <div>
-              <p>Comandos disponíveis:</p>
-              {Object.values(commandList).map((cmd, index) => {
-                const allAliases = [cmd.name, ...cmd.aliases].join(' | ');
-                return (
-                  <div key={`help-${index}`} style={{ marginBottom: '1.2rem' }}>
-                    <div style={{ color: '#00ff9d' }}>
-                      <span style={{ marginRight: '1ch' }}>&gt;</span>
-                      <span>{allAliases}</span>
-                    </div>
-                    <p style={{ margin: '0.25em 0 0 2.5ch', color: '#a0aec0' }}>
-                      {cmd.description}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-          );
+          response = <Ajuda />;
           break;
         
         case 'projetos':
@@ -97,10 +60,7 @@ function App() {
           break;
         
         case 'contato':
-          const contactInfo = 'Você pode me encontrar em:\n- LinkedIn: linkedin.com/in/seu-usuario\n- GitHub: github.com/seu-usuario\n- Email: seu-email@exemplo.com';
-          response = contactInfo.split('\n').map((line, index) => (
-            <TerminalOutput key={`contact-${index}`}>{line}</TerminalOutput>
-          ));
+          response = <Contato />;
           break;
         
         case 'limpar':
@@ -123,12 +83,18 @@ function App() {
     setTerminalLineData(newLines);
   }
 
+  // Corrigi o nome do prompt para "visitante" como você tinha pedido
+  const myPrompt = "visitante@portfolio:~$";
+
   return (
     <div className="container">
+      <LanguageSwitcher />
+
       <Terminal
         name='Meu Portfólio Profissional'
         colorMode={ColorMode.Dark}
         onInput={handleInput}
+        prompt={myPrompt}
       >
         {terminalLineData}
       </Terminal>
