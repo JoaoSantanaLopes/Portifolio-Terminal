@@ -25,7 +25,7 @@ Antes de começar, certifique-se de ter o **[Node.js](https://nodejs.org/en/)** 
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)
+    git clone https://github.com/JoaoSantanaLopes/Portifolio-Terminal.git
     ```
 
 2.  **Acesse o diretório do projeto:**
