@@ -1,6 +1,6 @@
 # Portfólio Pessoal em React
 
-Este é o repositório do meu portfólio pessoal, um projeto criado com React para exibir meus projetos, habilidades e experiência de forma interativa e moderna.
+Este é o repositório do meu portfólio pessoal, um projeto criado com React para exibir meus projetos, habilidades e experiência.
 
 ## 🚀 Demonstração ao Vivo
 
