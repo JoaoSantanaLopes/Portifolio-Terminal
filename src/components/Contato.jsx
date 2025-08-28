@@ -1,15 +1,11 @@
-// src/components/Contato.jsx
-
 import React from 'react';
-// Usaremos a biblioteca de ícones que já está instalada
 import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
-import './Contato.css'; // Usaremos este arquivo para o estilo
+import './Contato.css';
 
 const Contato = () => {
-  // Lembre-se de substituir pelos seus links e e-mail reais
-  const seuLinkedIn = "https://linkedin.com/in/seu-usuario";
-  const seuGitHub = "https://github.com/seu-usuario";
-  const seuEmail = "seu-email@exemplo.com";
+  const seuLinkedIn = "https://linkedin.com/in/joao-vitor-santana-lopes";
+  const seuGitHub = "https://github.com/JoaoSantanaLopes";
+  const seuEmail = "joaovslopes20@gmail.com";
 
   return (
     <div className="contato-container" style={{ padding: '0 1.5rem' }}>
@@ -19,19 +15,16 @@ const Contato = () => {
       </p>
 
       <div className="contato-links">
-        {/* LinkedIn */}
         <a href={seuLinkedIn} target="_blank" rel="noopener noreferrer" className="contato-item">
           <FaLinkedin className="contato-icone" />
           <span>LinkedIn</span>
         </a>
 
-        {/* GitHub */}
         <a href={seuGitHub} target="_blank" rel="noopener noreferrer" className="contato-item">
           <FaGithub className="contato-icone" />
           <span>GitHub</span>
         </a>
 
-        {/* E-mail (Solução com mailto:) */}
         <a href={`mailto:${seuEmail}`} className="contato-item">
           <FaEnvelope className="contato-icone" />
           <span>{seuEmail}</span>

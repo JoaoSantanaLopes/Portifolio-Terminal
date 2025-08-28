@@ -1,4 +1,3 @@
-// src/components/BoasVindas.jsx
 import React from 'react';
 import { TypeAnimation } from 'react-type-animation';
 import { IoFlash, IoLocationSharp, IoSchool } from 'react-icons/io5';

@@ -1,36 +1,34 @@
-// src/projectsData.js
-
 export const projectsData = [
   {
     id: 1,
-    title: 'Plataforma de E-commerce',
-    description: 'Uma plataforma de e-commerce responsiva e completa, com carrinho de compras, autenticação de usuários e integração com API de pagamentos.',
-    gif: '/ecommerce.gif', // Caminho para o seu GIF na pasta `public`
-    repoLink: 'https://github.com/seu-usuario/ecommerce-repo',
-    technologies: ['React', 'Node.js', 'Redux', 'MongoDB']
+    title: 'Java_Parking',
+    description: 'Uma plataforma para gerenciar vagas de estacionamento e controle de veículos, com registro de entradas e saídas, disponibilizando relatórios de ocupação e estatísticas.',
+    gif: '/java_parking.gif',
+    repoLink: 'https://github.com/JoaoSantanaLopes/Java-Parkings-Sistema',
+    technologies: ['Java', 'Swing', 'MySQL', 'JDBC']
   },
   {
     id: 2,
-    title: 'App de Gerenciamento de Tarefas',
-    description: 'Aplicativo para organização de tarefas (To-Do List) com funcionalidades de arrastar e soltar, notificações e armazenamento local.',
-    gif: '/gifs/todo-app.gif',
-    repoLink: 'https://github.com/seu-usuario/todo-app-repo',
-    technologies: ['React', 'TypeScript', 'Styled-Components']
+    title: 'Reclameaqui_scrapper',
+    description: 'Um robô de automação para capturar e organizar reclamações e informações de empresas do ReclameAqui, permitindo análise e armazenamento informações das melhores e piores empresas.',
+    gif: '/reclameaqui-scraper.gif',
+    repoLink: 'https://github.com/JoaoSantanaLopes/ReclameAquiScraper-Python',
+    technologies: ['Python', 'BeautifulSoup', 'Selenium', 'Pandas']
   },
   {
     id: 3,
-    title: 'Blog Pessoal com CMS',
-    description: 'Um blog pessoal moderno e rápido, construído com um gerador de site estático e integrado a um Headless CMS para gerenciamento de conteúdo.',
-    gif: '/gifs/blog.gif',
-    repoLink: 'https://github.com/seu-usuario/blog-repo',
-    technologies: ['Next.js', 'GraphQL', 'TailwindCSS']
+    title: 'Crm_Pecas_Vortex',
+    description: 'Sistema de ERP personalizado para a Vortex, uma empresa de autopeças, que integra vendas, estoque, finanças e cadastro de clientes. O sistema automatiza relatórios, otimiza o gerenciamento de estoque e melhora a comunicação entre setores, garantindo eficiência operacional e suporte ao crescimento da empresa.',
+    gif: '/crm_autopecas.gif',
+    repoLink: '#',
+    technologies: ['Java', 'Spring Boot', 'MySQL', 'Thymeleaf', 'Charts.js']
   },
   {
     id: 4,
-    title: 'Blog Pessoal com CMS',
-    description: 'Um blog pessoal moderno e rápido, construído com um gerador de site estático e integrado a um Headless CMS para gerenciamento de conteúdo.',
-    gif: '/gifs/blog.gif',
-    repoLink: 'https://github.com/seu-usuario/blog-repo',
-    technologies: ['Next.js', 'GraphQL', 'TailwindCSS']
+    title: 'Santo_Restauro (Em Construção)',
+    description: 'Site de apresentação para empresa de restauração de móveis e obras de arte, com portfólio de trabalhos, informações de serviços e contato para clientes.',
+    gif: '/santo_restauro.gif',
+    repoLink: '#',
+    technologies: ['Django', 'React', 'Postgresql']
   }
 ];

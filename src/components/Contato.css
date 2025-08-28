@@ -1,11 +1,11 @@
-/* src/components/Contato.css */
+
 
 .contato-container {
   color: #e2e8f0;
 }
 
 .contato-titulo {
-  color: #a777e3; /* Nossa cor tema roxa */
+  color: #a777e3;
   font-size: 1.8rem;
   margin-bottom: 0.5rem;
 }
@@ -19,7 +19,7 @@
 .contato-links {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem; /* Espaçamento entre os links */
+  gap: 1.5rem;
 }
 
 .contato-item {
@@ -33,9 +33,9 @@
 }
 
 .contato-item:hover {
-  color: #a777e3; /* Efeito hover com a cor tema */
+  color: #a777e3;
 }
 
 .contato-icone {
-  font-size: 1.8rem; /* Tamanho dos ícones */
+  font-size: 1.8rem;
 }

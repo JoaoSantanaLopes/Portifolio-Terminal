@@ -1,7 +1,4 @@
-// src/components/Ajuda.jsx
-
 import React from 'react';
-// Importa a lista de comandos do nosso novo arquivo central
 import { commandList } from '../commands';
 
 const Ajuda = () => {

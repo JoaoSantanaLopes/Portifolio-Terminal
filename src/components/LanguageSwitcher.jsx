@@ -1,8 +1,5 @@
-// src/components/LanguageSwitcher.jsx - VERSÃO PLANO B
-
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-// Usando um ícone de globo do pacote Font Awesome (fa)
 import { FaGlobeAmericas } from 'react-icons/fa';
 
 const styles = {
@@ -14,13 +11,13 @@ const styles = {
     display: 'flex',
     gap: '12px',
     alignItems: 'center',
-    color: '#a0aec0', // Cor cinza para o texto
+    color: '#a0aec0', 
   },
   icon: {
     cursor: 'pointer',
     fontSize: '24px',
     transition: 'color 0.3s ease, transform 0.3s ease',
-    color: '#a0aec0', // Cor base do ícone
+    color: '#a0aec0', 
   },
   langText: {
     fontWeight: 'bold',
@@ -28,7 +25,7 @@ const styles = {
     transition: 'color 0.3s ease',
   },
   active: {
-    color: '#7fdbff', // Um azul claro para o idioma ativo
+    color: '#7fdbff',
     transform: 'scale(1.1)',
   }
 };

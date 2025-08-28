@@ -1,5 +1,3 @@
-// src/components/ExperienceCard.jsx
-
 import React from 'react';
 import './ExperienceCard.css';
 
@@ -8,7 +6,6 @@ const ExperienceCard = ({ experience }) => {
 
   return (
     <div className="experience-card">
-      {/* NOVO ELEMENTO PARA A DATA NA TIMELINE */}
       <div className="timeline-date"></div>
       
       <div className="timeline-marker"></div>
