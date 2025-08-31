@@ -1,7 +1,6 @@
-
-
 .contato-container {
   color: #e2e8f0;
+  margin-bottom: 10px;
 }
 
 .contato-titulo {
@@ -38,4 +37,41 @@
 
 .contato-icone {
   font-size: 1.8rem;
+}
+
+.interactive-email {
+  margin-top: 2.5rem;
+}
+
+.form-divider {
+  border: none;
+  border-top: 1px solid #4a5568;
+  margin-bottom: 1.5rem;
+}
+
+.interactive-email p {
+  color: #a0aec0;
+  margin-bottom: 1rem;
+}
+
+.repo-link-style-button {
+  background-color: transparent;
+  border: none; 
+  padding: 0;
+  
+  color: #a777e3;
+  font-family: inherit;
+  font-size: 1.1rem; 
+  font-weight: bold;
+  
+  cursor: pointer;
+  transition: color 0.2s ease;
+  
+  display: inline-flex; 
+  align-items: center;
+}
+
+.repo-link-style-button:hover {
+  color: #c39efc;
+  
 }

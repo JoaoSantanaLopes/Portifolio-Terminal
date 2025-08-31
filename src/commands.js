@@ -2,31 +2,31 @@ export const commandList = {
     sobre: {
       name: 'sobre',
       aliases: ['sobremim', 'aboutme', 'about'],
-      description: 'Mostra uma breve descrição sobre mim.',
+      description: 'ajuda.desc_sobre',
     },
     ajuda: {
       name: 'ajuda',
       aliases: ['help'],
-      description: 'Mostra esta lista de comandos disponíveis.',
+      description: 'ajuda.desc_ajuda',
     },
     projetos: {
       name: 'projetos',
       aliases: ['projects'],
-      description: 'Exibe os principais projetos em que trabalhei.',
+      description: 'ajuda.desc_projetos',
     },
     experiencias: {
       name: 'experiencias',
       aliases: ['experience', 'xp'],
-      description: 'Mostra minha trajetória profissional e experiências.',
+      description: 'ajuda.desc_experiencias',
     },
     contato: {
       name: 'contato',
       aliases: ['contact'],
-      description: 'Exibe minhas informações de contato.',
+      description: 'ajuda.desc_contato',
     },
     limpar: {
       name: 'limpar',
       aliases: ['clear', 'cls'],
-      description: 'Limpa o histórico do terminal.',
+      description: 'ajuda.desc_limpar',
     }
   };

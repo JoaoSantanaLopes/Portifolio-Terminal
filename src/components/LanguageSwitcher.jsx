@@ -5,7 +5,7 @@ import { FaGlobeAmericas } from 'react-icons/fa';
 const styles = {
   switcherContainer: {
     position: 'absolute',
-    top: '12px',
+    top: '18px',
     right: '20px',
     zIndex: 10,
     display: 'flex',

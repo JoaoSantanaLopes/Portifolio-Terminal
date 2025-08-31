@@ -1,16 +1,22 @@
+// src/components/BoasVindas.jsx
+
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { TypeAnimation } from 'react-type-animation';
 import { IoFlash, IoLocationSharp, IoSchool } from 'react-icons/io5';
 import './BoasVindas.css';
 
 const BoasVindas = () => {
+  const { t, i18n } = useTranslation();
+
   return (
     <div className="welcome-container">
       <TypeAnimation
+        key={i18n.language} 
         sequence={[
-          'João Vítor Santana Lopes',
+          t('boasVindas.tituloAnimado1'),
           1000,
-          'João Vítor Santana Lopes - Engenheiro de Software',
+          t('boasVindas.tituloAnimado2'),
           2000,
         ]}
         wrapper="h1"
@@ -20,27 +26,27 @@ const BoasVindas = () => {
       />
       
       <div className="static-welcome">
-        <p className="welcome-title">$ Bem-vindo ao meu Portfólio</p>
+        <p className="welcome-title">{t('boasVindas.titulo')}</p>
         <hr className="divider" />
-        <p>Um desenvolvedor em formação, apaixonado por criar soluções tecnológicas.</p>
+        <p>{t('boasVindas.subtitulo')}</p>
         
         <ul className="info-list">
           <li>
             <IoFlash className="icon" style={{ color: '#f3d956' }} />
-            Engenharia de Software | Desenvolvimento Full Stack
+            {t('boasVindas.info1')}
           </li>
           <li>
             <IoLocationSharp className="icon" style={{ color: '#ff6b6b' }} />
-            Belo Horizonte, Minas Gerais, Brasil
+            {t('boasVindas.info2')}
           </li>
           <li>
             <IoSchool className="icon" />
-            Engenharia de Software - PUC Minas
+            {t('boasVindas.info3')}
           </li>
         </ul>
         
         <p className="navegue-text">
-          Digite `ajuda` para conhecer mais sobre os comandos.
+          {t('boasVindas.navegue')}
         </p>
       </div>
     </div>

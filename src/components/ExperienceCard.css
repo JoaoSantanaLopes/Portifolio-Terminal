@@ -1,9 +1,11 @@
+/* src/components/ExperienceCard.css */
+
 @keyframes slideInFadeIn {
   from {
     opacity: 0;
     transform: translateX(-20px);
   }
-  to {
+to {
     opacity: 1;
     transform: translateX(0);
   }
@@ -70,14 +72,60 @@
   border: 1px solid #4a5568;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-.role-title { margin: 0; color: #e2e8f0; font-size: 1.4rem; line-height: 1.5; }
-.company-name { color: #ff851b; font-weight: 500; }
-.date-range { margin: 0.25rem 0 1rem 0; color: #a0aec0; font-style: italic; font-size: 0.9rem; }
-.description-list { padding-left: 20px; margin: 0 0 1rem 0; color: #cbd5e0; line-height: 1.6; }
-.description-list li::marker { color: #ff851b; }
-.company-info { font-size: 0.9rem; color: #a0aec0; border-top: 1px solid #4a5568; padding-top: 1rem; margin-top: 1rem; margin-bottom: 1rem; }
-.skills-container { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.skill-tag { background-color: #4a5568; color: #cbd5e0; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+
+.role-title { 
+  margin: 0; 
+  color: #e2e8f0; 
+  font-size: 1.4rem; 
+  line-height: 1.5; 
+}
+
+.company-name { 
+  color: #ff851b; 
+  font-weight: 500; 
+}
+
+.date-range { 
+  margin: 0.25rem 0 1rem 0; 
+  color: #a0aec0; 
+  font-style: italic; 
+  font-size: 0.9rem; 
+}
+
+.description-list { 
+  padding-left: 20px; 
+  margin: 0 0 1rem 0; 
+  color: #cbd5e0; 
+  line-height: 1.6; 
+}
+
+.description-list li::marker { 
+  color: #ff851b; 
+}
+
+.company-info { 
+  font-size: 0.9rem; 
+  color: #a0aec0; 
+  border-top: 1px solid #4a5568; 
+  padding-top: 1rem; 
+  margin-top: 1rem; 
+  margin-bottom: 1rem; 
+}
+
+.skills-container { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 0.5rem; 
+}
+
+.skill-tag { 
+  background-color: #4a5568; 
+  color: #cbd5e0; 
+  padding: 0.25rem 0.75rem; 
+  border-radius: 9999px; 
+  font-size: 0.8rem; 
+  font-weight: 600; 
+}
 
 .experience-card:hover .timeline-marker {
   transform: scale(1.2) translateY(-50%);
@@ -92,4 +140,31 @@
 .experience-card:hover .experience-content {
   border-color: #ff851b;
   box-shadow: 0 10px 25px -5px rgba(255, 133, 27, 0.15);
+}
+
+@media (max-width: 768px) {
+  .experience-content {
+    padding: 1rem;
+  }
+
+  .role-title {
+    font-size: 1.2rem;
+    line-height: 1.4;
+  }
+
+  .date-range, 
+  .company-info, 
+  .description-list {
+    font-size: 0.85rem;
+  }
+
+  .skills-container {
+    gap: 0.4rem;
+  }
+
+  .skill-tag {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+  }
+  
 }
