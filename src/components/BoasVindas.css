@@ -54,3 +54,26 @@
   color: #00ff9d;
   font-style: italic;
 }
+
+@media (max-width: 768px) {
+  .name-animation {
+    font-size: 1.4rem; 
+    margin-bottom: 1.5rem;
+  }
+
+  .welcome-title {
+    font-size: 1.1rem; 
+  }
+  
+  .welcome-container p, .info-list li {
+    font-size: 0.95rem;
+  }
+
+  .info-list li {
+    gap: 0.75rem; 
+  }
+
+  .info-list .icon {
+    font-size: 1.1rem;
+  }
+}

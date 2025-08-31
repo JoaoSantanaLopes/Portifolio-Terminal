@@ -1,27 +1,27 @@
 export const experiencesData = [
   {
     id: 1,
-    role: 'Estagiário em Desenvolvimento de Software',
+    roleKey: 'experiencias.blueTape_cargo',
     company: 'Blue Tape',
-    companyDescription: 'Empresa de tecnologia focada em automação de processos para o setor jurídico (LawTech).',
-    startDate: 'Agosto 2025',
-    endDate: 'Presente',
-    description: [
-      'Desenvolvimento e manutenção de robôs de automação (RPA) utilizando Python para otimizar processos na área jurídica.'
+    companyDescriptionKey: 'experiencias.blueTape_desc',
+    startDate: 'experiencias.blueTape_startDate', 
+    endDate: 'experiencias.blueTape_endDate',     
+    descriptionKeys: [
+      'experiencias.blueTape_ponto1'
     ],
     skills: ['Python', 'RPA', 'Automação de Processos', 'Desenvolvimento de Software']
   },
   {
     id: 2,
-    role: 'Monitor de Programação Modular',
+    roleKey: 'experiencias.puc_cargo',
     company: 'Pontifícia Universidade Católica de Minas Gerais',
-    companyDescription: 'Uma das maiores e mais prestigiadas universidades privadas do Brasil.',
-    startDate: 'Março 2025',
-    endDate: 'Julho 2025',
-    description: [
-      'Auxiliei turmas de alunos na compreensão e aplicação dos princípios da Programação Orientada a Objetos (POO).',
-      'Foquei em conceitos como encapsulamento, herança e polimorfismo utilizando a linguagem Java.'
+    companyDescriptionKey: 'experiencias.puc_desc',
+    startDate: 'experiencias.puc_startDate', 
+    endDate: 'experiencias.puc_endDate',     
+    descriptionKeys: [
+      'experiencias.puc_ponto1',
+      'experiencias.puc_ponto2'
     ],
-    skills: ['Java', 'Programação Orientada a Objetos', 'Mentoria', 'Didática']
+    skills: ['Java', 'POO', 'Mentoria', 'Didática']
   }
 ];

@@ -78,3 +78,23 @@
 .repo-link:hover {
   color: #66ffc9;
 }
+
+
+
+@media (max-width: 768px) {
+  .card-container {
+    flex-direction: column;
+  }
+
+  .content-container {
+    padding: 1rem;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+  }
+
+  .card-description {
+    font-size: 0.9rem;
+  }
+}
