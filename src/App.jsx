@@ -131,6 +131,7 @@ function handleInput(input) {
         colorMode={ColorMode.Dark}
         onInput={handleInput}
         prompt={myPrompt}
+        height='83vh'
       >
         {terminalLineData}
       </Terminal>
