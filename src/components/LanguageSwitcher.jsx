@@ -1,32 +1,41 @@
+// src/components/LanguageSwitcher.jsx
+
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+// 1. Importe o ícone de Globo que você queria
 import { FaGlobeAmericas } from 'react-icons/fa';
 
 const styles = {
   switcherContainer: {
     position: 'absolute',
     top: '18px',
-    right: '20px',
+    right: '22px',
     zIndex: 10,
     display: 'flex',
-    gap: '12px',
+    gap: '10px', // Ajustei o espaço para acomodar os novos itens
     alignItems: 'center',
-    color: '#a0aec0', 
   },
-  icon: {
+  // 2. Novo estilo para o ícone de globo
+  globeIcon: {
+    fontSize: '22px',
+    color: '#a0aec0', // Cor cinza padrão
+  },
+  iconSpan: {
     cursor: 'pointer',
     fontSize: '24px',
-    transition: 'color 0.3s ease, transform 0.3s ease',
-    color: '#a0aec0', 
+    transition: 'opacity 0.3s ease, transform 0.3s ease',
+    opacity: 0.6,
+    borderRadius: '4px',
+    overflow: 'hidden',
   },
-  langText: {
-    fontWeight: 'bold',
-    cursor: 'pointer',
-    transition: 'color 0.3s ease',
+  activeIcon: {
+    opacity: 1, // Totalmente visível
+    boxShadow: '0 0 12px rgba(45, 200, 255, 0.7)', // Brilho azul claro
   },
-  active: {
-    color: '#7fdbff',
-    transform: 'scale(1.1)',
+  // 3. Novo estilo para o separador
+  separator: {
+    color: '#4a5568', // Cor escura e sutil
+    fontSize: '18px',
   }
 };
 
@@ -42,20 +51,30 @@ const LanguageSwitcher = () => {
 
   return (
     <div style={styles.switcherContainer}>
-      <FaGlobeAmericas style={{...styles.icon, ...(isEnActive ? { color: '#7fdbff' } : {})}} />
-      <span 
-        style={{...styles.langText, ...(isPtActive ? styles.active : {})}} 
+      {/* 4. Adicionamos o ícone de globo no início */}
+      
+      <span
+        className="fi fi-br"
+        style={{
+          ...styles.iconSpan, 
+          ...(isPtActive ? styles.activeIcon : {})
+        }} 
         onClick={() => changeLanguage('pt')}
-      >
-        PT
-      </span>
-      <span>|</span>
-      <span 
-        style={{...styles.langText, ...(isEnActive ? styles.active : {})}} 
+        title="Mudar para Português"
+      />
+
+      {/* 5. Adicionamos o separador visual entre as bandeiras */}
+      <span style={styles.separator}>|</span>
+
+      <span
+        className="fi fi-us"
+        style={{
+          ...styles.iconSpan, 
+          ...(isEnActive ? styles.activeIcon : {})
+        }} 
         onClick={() => changeLanguage('en')}
-      >
-        EN
-      </span>
+        title="Switch to English"
+      />
     </div>
   );
 };
