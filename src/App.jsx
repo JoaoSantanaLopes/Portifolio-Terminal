@@ -99,7 +99,12 @@ const handleCommandInput = (input) => {
       default: break;
     }
   } else {
-    response = <TerminalOutput>Comando não reconhecido: "{userInput}". Digite "ajuda".</TerminalOutput>;
+    response = (
+        <TerminalOutput>
+          {t("comando.nao_reconhecido")} "{userInput}"<br />
+          {t("comando.ver_ajuda")}
+        </TerminalOutput>
+      );
   }
   
   if (Array.isArray(response)) {
