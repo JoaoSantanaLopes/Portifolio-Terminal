@@ -60,7 +60,7 @@ function App() {
       currentData.message = input;
       nextPrompt = t('contato.form.botao_enviando');
       
-      emailjs.send('service_zrd3kkm', 'template_uwuv5vm', currentData, 'PsJLICXHGFyBeICPj')
+      emailjs.send('service_tp07iem', 'template_jkaoh5r', currentData, 'HGPP8LXWtII63OcaO')
         .then(() => {
           setTerminalLineData(prev => [...prev, <TerminalOutput>{t('contato.form.status_sucesso')}</TerminalOutput>]);
         }).catch(() => {
