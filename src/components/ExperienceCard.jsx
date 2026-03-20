@@ -25,7 +25,7 @@ const ExperienceCard = ({ experience }) => {
 
         <div className="skills-container">
           {skills.map((skill, index) => (
-            <span key={index} className="skill-tag">{skill}</span>
+            <span key={index} className="skill-tag">{t(skill)}</span>
           ))}
         </div>
       </div>

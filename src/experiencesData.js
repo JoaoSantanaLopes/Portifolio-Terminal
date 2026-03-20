@@ -9,7 +9,7 @@ export const experiencesData = [
     descriptionKeys: [
       'experiencias.blueTape_ponto1'
     ],
-    skills: ['Python', 'RPA', 'Automação de Processos', 'Desenvolvimento de Software']
+    skills: ['Python', 'RPA', 'experiencias.blueTape_habilidade1', 'experiencias.blueTape_habilidade2']
   },
   {
     id: 2,
@@ -22,6 +22,6 @@ export const experiencesData = [
       'experiencias.puc_ponto1',
       'experiencias.puc_ponto2'
     ],
-    skills: ['Java', 'POO', 'Mentoria', 'Didática']
+    skills: ['Java', 'OOP', 'experiencias.puc_habilidade1', 'experiencias.puc_habilidade2']
   }
 ];
