@@ -18,7 +18,7 @@ const resources = {
       "sobre": {
         "nome": "João Vitor Santana Lopes",
         "cargo": "Software Engineering Student | Full Stack Developer",
-        "biografia": "Currently in my fifth semester of Software Engineering, I am a developer passionate about technology and focused on turning ideas into practical solutions. My academic journey has provided me with a solid foundation, including hands-on experience with technologies like Java, Spring Boot, and Django. Professionally, I develop and maintain automation bots (RPA) with Python, optimizing processes and applying programming logic to solve real-world problems. Adaptable and always eager to learn, I am constantly seeking new challenges that allow me to grow and contribute to innovative projects.",
+        "biografia": "Currently in my sixth semester of Software Engineering, I am a developer passionate about technology and focused on turning ideas into practical solutions. My academic journey has provided me with a solid foundation, including hands-on experience with technologies like Java, Spring Boot, and Django. Professionally, I develop and maintain automation bots (RPA) with Python, optimizing processes and applying programming logic to solve real-world problems. Adaptable and always eager to learn, I am constantly seeking new challenges that allow me to grow and contribute to innovative projects.",
         "titulo_skills": "Main Skills:"
       },
       "comando": {
@@ -32,6 +32,7 @@ const resources = {
         "desc_projetos": "Displays the main projects I've worked on.",
         "desc_experiencias": "Shows my professional journey and experiences.",
         "desc_contato": "Displays my contact information.",
+        "desc_certificacoes": "Shows the certifications I have earned.",
         "desc_curriculo": "View and download my resume/CV.",
         "desc_limpar": "Clears the terminal history."
       },
@@ -81,6 +82,20 @@ const resources = {
         "puc_ponto2": "Focused on concepts such as encapsulation, inheritance, and polymorphism using the Java language.",
         "puc_habilidade1": "mentoring",
         "puc_habilidade2": "didactics"
+      },
+      "certificacoes": {
+        "tituloSecao": "My Certifications:",
+        "credencial": "View credential \u2192",
+        "aws_titulo": "AWS Certified Cloud Practitioner",
+        "aws_data": "January 2026",
+        "aws_desc": "Certification that validates a foundational understanding of the AWS cloud: its main services, security and compliance models, architecture principles, pricing and support.",
+        "aws_habilidade1": "Cloud Security",
+        "aws_habilidade2": "Cloud Architecture",
+        "azure_titulo": "Microsoft Certified: Azure AI Fundamentals",
+        "azure_data": "August 2026",
+        "azure_desc": "Certification that validates knowledge of artificial intelligence and machine learning concepts, and how to apply them through the AI services available on Microsoft Azure.",
+        "azure_habilidade1": "Artificial Intelligence",
+        "azure_habilidade2": "Cognitive Services"
       }
     }
   },
@@ -100,7 +115,7 @@ const resources = {
       "sobre": {
         "nome": "João Vitor Santana Lopes",
         "cargo": "Estudante de Engenharia de Software | Desenvolvedor Full Stack",
-        "biografia": "Cursando o quinto período de Engenharia de Software, sou um desenvolvedor apaixonado por tecnologia e focado em transformar ideias em soluções práticas. Minha jornada acadêmica tem me proporcionado uma base sólida, com experiência prática em tecnologias como Java, Spring Boot e Django. Profissionalmente, atuo no desenvolvimento e manutenção de robôs de automação (RPA) com Python, otimizando processos e aplicando a lógica de programação para resolver problemas reais. Adaptável e sempre buscando aprender, estou constantemente à procura de novos desafios que me permitam crescer e contribuir para projetos inovadores.",
+        "biografia": "Cursando o sexto período de Engenharia de Software, sou um desenvolvedor apaixonado por tecnologia e focado em transformar ideias em soluções práticas. Minha jornada acadêmica tem me proporcionado uma base sólida, com experiência prática em tecnologias como Java, Spring Boot e Django. Profissionalmente, atuo no desenvolvimento e manutenção de robôs de automação (RPA) com Python, otimizando processos e aplicando a lógica de programação para resolver problemas reais. Adaptável e sempre buscando aprender, estou constantemente à procura de novos desafios que me permitam crescer e contribuir para projetos inovadores.",
         "titulo_skills": "Principais Habilidades:"
       },
       "comando": {
@@ -114,6 +129,7 @@ const resources = {
         "desc_projetos": "Exibe os principais projetos em que trabalhei.",
         "desc_experiencias": "Mostra minha trajetória profissional e experiências.",
         "desc_contato": "Exibe minhas informações de contato.",
+        "desc_certificacoes": "Mostra as certificações que eu possuo.",
         "desc_curriculo": "Visualiza e baixa meu currículo.",
         "desc_limpar": "Limpa o histórico do terminal."
       },
@@ -164,6 +180,20 @@ const resources = {
         "puc_ponto2": "Foquei em conceitos como encapsulamento, herança e polimorfismo utilizando a linguagem Java.",
         "puc_habilidade1": "mentoria",
         "puc_habilidade2": "didática"
+      },
+      "certificacoes": {
+        "tituloSecao": "Minhas Certificações:",
+        "credencial": "Ver credencial \u2192",
+        "aws_titulo": "AWS Certified Cloud Practitioner",
+        "aws_data": "Janeiro 2026",
+        "aws_desc": "Certificação que valida o entendimento fundamental da nuvem AWS: seus principais serviços, modelos de segurança e conformidade, princípios de arquitetura, precificação e suporte.",
+        "aws_habilidade1": "Segurança na Nuvem",
+        "aws_habilidade2": "Arquitetura em Nuvem",
+        "azure_titulo": "Microsoft Certified: Azure AI Fundamentals",
+        "azure_data": "Agosto 2026",
+        "azure_desc": "Certificação que valida o conhecimento dos conceitos de inteligência artificial e machine learning, e de como aplicá-los por meio dos serviços de IA disponíveis no Microsoft Azure.",
+        "azure_habilidade1": "Inteligência Artificial",
+        "azure_habilidade2": "Serviços Cognitivos"
       }
     }
   }

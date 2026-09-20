@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { commandList } from './commands';
 import Projetos from './components/Projetos';
 import Experiencias from './components/Experiencias';
+import Certificacoes from './components/Certificacoes';
 import SobreMim from './components/SobreMim';
 import Ajuda from './components/Ajuda';
 import Contato from './components/Contato';
@@ -188,6 +189,7 @@ function App() {
         case 'projetos': response = <Projetos />; break;
         case 'experiencias': response = <Experiencias />; break;
         case 'contato': response = <Contato onStartEmailPrompt={startEmailPrompt} />; break;
+        case 'certificacoes': response = <Certificacoes />; break;
         case 'curriculo': response = <Curriculo />; break;
         case 'limpar': setTerminalLineData([]); return;
         default: break;

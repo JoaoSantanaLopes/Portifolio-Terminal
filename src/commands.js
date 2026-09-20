@@ -29,6 +29,11 @@ export const commandList = {
       aliases: ['cv', 'resume'],
       description: 'ajuda.desc_curriculo',
     },
+    certificacoes: {
+      name: 'certificacoes',
+      aliases: ['certificados', 'certifications', 'certs'],
+      description: 'ajuda.desc_certificacoes',
+    },
     limpar: {
       name: 'limpar',
       aliases: ['clear', 'cls'],
