@@ -10,20 +10,17 @@ const Ajuda = () => {
 
   return (
     <div className="ajuda-container">
-      <p>{t('ajuda.titulo')}</p> 
+      <p className="ajuda-titulo">{t('ajuda.titulo')}</p>
 
       {Object.values(commandList).map((cmd, index) => {
         const allAliases = [cmd.name, ...cmd.aliases].join(' | ');
         return (
-          <div key={`help-${index}`} className="ajuda-item">
-            <div className="ajuda-aliases">
-              <span className="ajuda-aliases-symbol">&gt;</span>
-              <span>{allAliases}</span>
-            </div>
-            <p className="ajuda-description">
-              {t(cmd.description)}
-            </p>
-          </div>
+          <p key={`help-${index}`} className="ajuda-item">
+            <span className="ajuda-aliases-symbol">&gt;</span>
+            <span className="ajuda-aliases">{allAliases}</span>
+            <span className="ajuda-separador"> - </span>
+            <span className="ajuda-description">{t(cmd.description)}</span>
+          </p>
         );
       })}
     </div>

@@ -1,7 +1,7 @@
 export const commandList = {
     sobre: {
       name: 'sobre',
-      aliases: ['sobremim', 'aboutme', 'about'],
+      aliases: ['about'],
       description: 'ajuda.desc_sobre',
     },
     ajuda: {
@@ -19,20 +19,20 @@ export const commandList = {
       aliases: ['experience', 'xp'],
       description: 'ajuda.desc_experiencias',
     },
-    contato: {
-      name: 'contato',
-      aliases: ['contact'],
-      description: 'ajuda.desc_contato',
+    certificacoes: {
+      name: 'certificacoes',
+      aliases: ['certifications', 'certs'],
+      description: 'ajuda.desc_certificacoes',
     },
     curriculo: {
       name: 'curriculo',
       aliases: ['cv', 'resume'],
       description: 'ajuda.desc_curriculo',
     },
-    certificacoes: {
-      name: 'certificacoes',
-      aliases: ['certificados', 'certifications', 'certs'],
-      description: 'ajuda.desc_certificacoes',
+    contato: {
+      name: 'contato',
+      aliases: ['contact'],
+      description: 'ajuda.desc_contato',
     },
     limpar: {
       name: 'limpar',

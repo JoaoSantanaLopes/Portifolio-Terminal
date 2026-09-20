@@ -3,32 +3,53 @@
   line-height: 1.6;
 }
 
+.ajuda-titulo {
+  margin: 0 0 0.75rem 0;
+}
+
 .ajuda-item {
-  margin-bottom: 1.2rem;
+  margin: 0 0 0.25rem 0;
+  padding-left: 2.5ch;
+  text-indent: -2.5ch;
+  /* sem font-size: herda os 18px do proprio terminal */
 }
 
 .ajuda-aliases {
   color: #00ff9d;
-  font-size: 1.2rem;
 }
 
 .ajuda-aliases-symbol {
+  color: #00ff9d;
   margin-right: 1ch;
 }
 
-.ajuda-description {
-  margin: 0.25em 0 0 2.5ch;
-  color: #a0aec0;
-  font-size: 1.1rem;
+.ajuda-separador {
+  color: #4a5568;
 }
 
+.ajuda-description {
+  color: #a0aec0;
+}
 
-@media (max-width: 768px) {
-  .ajuda-aliases {
-    font-size: 1rem; 
+/* Em telas estreitas a descrição volta para a linha de baixo, para não quebrar no meio */
+@media (max-width: 600px) {
+  .ajuda-container {
+    padding: 0 0.5rem;
+  }
+
+  .ajuda-item {
+    margin-bottom: 0.9rem;
+    padding-left: 0;
+    text-indent: 0;
+    font-size: 1rem;
+  }
+
+  .ajuda-separador {
+    display: none;
   }
 
   .ajuda-description {
-    font-size: 0.9rem; 
+    display: block;
+    margin-left: 2.5ch;
   }
 }
