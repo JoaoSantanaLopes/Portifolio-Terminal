@@ -40,3 +40,11 @@ z-index: 1;
 body {
 background-color: #1a202c;
 }
+
+/* saidas em coluna (ls e a lista do Tab duplo), como um terminal de verdade */
+.lista-colunas {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(16ch, 1fr));
+gap: 0.25rem 2ch;
+white-space: normal;
+}

@@ -55,7 +55,18 @@
   font-style: italic;
 }
 
+.atalhos-text {
+  color: #718096;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
 @media (max-width: 768px) {
+  /* no celular nao existe Tab nem Ctrl, entao a dica so atrapalha */
+  .atalhos-text {
+    display: none;
+  }
+
   .name-animation {
     font-size: 1.4rem; 
     margin-bottom: 1.5rem;

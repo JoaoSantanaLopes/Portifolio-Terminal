@@ -1,0 +1,78 @@
+.neofetch-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 1.5rem;
+}
+
+.neofetch-logo {
+  flex-shrink: 0;
+  font-size: 0.62rem;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.neofetch-logo-linha {
+  line-height: 1;
+  white-space: pre;
+  height: 1em;
+}
+
+.neofetch-logo span {
+  display: inline-block;
+}
+
+.neofetch-infos {
+  min-width: 0;
+}
+
+.neofetch-linha {
+  margin: 0;
+  white-space: normal;
+}
+
+.neofetch-label {
+  font-weight: bold;
+}
+
+.neofetch-valor {
+  color: #a0aec0;
+}
+
+.neofetch-separador {
+  margin: 0;
+  color: #4a5568;
+}
+
+.neofetch-paleta {
+  display: flex;
+  margin: 0.75rem 0 0 0;
+}
+
+.neofetch-paleta span {
+  width: 1.5rem;
+  height: 0.9rem;
+  border: 1px solid #2d3748;
+}
+
+@media (max-width: 768px) {
+  .neofetch-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .neofetch-logo {
+    font-size: 0.5rem;
+  }
+
+  .neofetch-linha,
+  .neofetch-separador {
+    font-size: 0.85rem;
+  }
+
+  .neofetch-paleta span {
+    width: 1.1rem;
+  }
+}

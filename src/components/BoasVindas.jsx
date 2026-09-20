@@ -48,6 +48,10 @@ const BoasVindas = () => {
         <p className="navegue-text">
           {t('boasVindas.navegue')}
         </p>
+
+        <p className="atalhos-text">
+          {t('boasVindas.atalhos')}
+        </p>
       </div>
     </div>
   );

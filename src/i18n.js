@@ -13,7 +13,8 @@ const resources = {
         "info1": "Software Engineering | Full Stack Development",
         "info2": "Belo Horizonte, Minas Gerais, Brazil",
         "info3": "Software Engineering - PUC Minas",
-        "navegue": "Type `help` to learn more about the commands."
+        "navegue": "Type `help` to learn more about the commands.",
+        "atalhos": "Tab completes commands · ↑ ↓ browse the history · Ctrl+C cancels"
       },
       "sobre": {
         "nome": "João Vitor Santana Lopes",
@@ -24,6 +25,11 @@ const resources = {
       "comando": {
         "nao_reconhecido": "Command not recognized:",
         "ver_ajuda": "Type 'help' to see the options.",
+        "sugestao": "Did you mean",
+        "cd_erro": "no such section",
+        "historico_vazio": "No commands in history yet.",
+        "lang_uso": "Usage: lang pt | lang en",
+        "lang_alterado": "Language switched to English.",
       },
       "ajuda": {
         "titulo": "Available Commands:",
@@ -110,7 +116,8 @@ const resources = {
         "info1": "Engenharia de Software | Desenvolvimento Full Stack",
         "info2": "Belo Horizonte, Minas Gerais, Brasil",
         "info3": "Engenharia de Software - PUC Minas",
-        "navegue": "Digite `ajuda` para conhecer mais sobre os comandos."
+        "navegue": "Digite `ajuda` para conhecer mais sobre os comandos.",
+        "atalhos": "Tab completa comandos · ↑ ↓ navegam o histórico · Ctrl+C cancela"
       },
       "sobre": {
         "nome": "João Vitor Santana Lopes",
@@ -120,7 +127,12 @@ const resources = {
       },
       "comando": {
         "nao_reconhecido": "Comando não reconhecido:",
-        "ver_ajuda": "Digite 'ajuda' para ver a lista de comandos disponíveis."
+        "ver_ajuda": "Digite 'ajuda' para ver a lista de comandos disponíveis.",
+        "sugestao": "Você quis dizer",
+        "cd_erro": "não é uma seção do portfólio",
+        "historico_vazio": "Nenhum comando no histórico ainda.",
+        "lang_uso": "Uso: lang pt | lang en",
+        "lang_alterado": "Idioma alterado para português."
       },
        "ajuda": {
         "titulo": "Comandos disponíveis:",

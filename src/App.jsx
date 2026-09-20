@@ -12,9 +12,25 @@ import Ajuda from './components/Ajuda';
 import Contato from './components/Contato';
 import BoasVindas from './components/BoasVindas';
 import Curriculo from './components/Curriculo';
+import Neofetch from './components/Neofetch';
 import LanguageSwitcher from './components/LanguageSwitcher';
 
 const allCommandNames = Object.values(commandList).flatMap(cmd => [cmd.name, ...cmd.aliases]);
+
+// Sugere o comando que mais compartilha letras iniciais com o que foi digitado
+function findSuggestion(typed) {
+  let melhor = null;
+  let maiorPrefixo = 1;
+  allCommandNames.forEach(name => {
+    let i = 0;
+    while (i < typed.length && i < name.length && typed[i] === name[i]) i++;
+    if (i > maiorPrefixo) {
+      maiorPrefixo = i;
+      melhor = name;
+    }
+  });
+  return melhor;
+}
 
 function getCommonPrefix(strings) {
   if (strings.length === 0) return '';
@@ -30,14 +46,21 @@ function getCommonPrefix(strings) {
 function setNativeInputValue(input, value) {
   input.focus();
   input.select();
-  document.execCommand('insertText', false, value);
+  if (value === '') {
+    document.execCommand('delete');
+  } else {
+    document.execCommand('insertText', false, value);
+  }
   setTimeout(() => {
     input.setSelectionRange(value.length, value.length);
+    // o react-terminal-ui desenha o proprio cursor e so o reposiciona nas setas,
+    // entao avisamos ele na linguagem que ele entende
+    input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }));
   }, 0);
 }
 
 function App() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [terminalLineData, setTerminalLineData] = useState(() => [
     <BoasVindas key="welcome" />
@@ -55,9 +78,44 @@ function App() {
   const containerRef = useRef(null);
   const commandHistoryRef = useRef(commandHistory);
   const promptActiveRef = useRef(promptState.active);
+  const ultimoTabRef = useRef(null);
+  const historyIndexRef = useRef(historyIndex);
+  const rascunhoRef = useRef('');        // o que estava sendo digitado antes de mexer no historico
+  const promptStringRef = useRef('');
+  const primeiraRenderRef = useRef(true);
+  const tamanhoAnteriorRef = useRef(0);
 
   commandHistoryRef.current = commandHistory;
   promptActiveRef.current = promptState.active;
+  historyIndexRef.current = historyIndex;
+
+  // Depois de cada escrita, alinha o topo da saida nova com o topo do terminal:
+  // quem pediu `projetos` ve o primeiro projeto, nao o ultimo. Em saida curta o
+  // navegador limita a rolagem e o resultado acaba sendo o fim, como antes.
+  useEffect(() => {
+    const anterior = tamanhoAnteriorRef.current;
+    tamanhoAnteriorRef.current = terminalLineData.length;
+
+    if (primeiraRenderRef.current) {
+      primeiraRenderRef.current = false;
+      return;
+    }
+
+    const terminal = containerRef.current?.querySelector('.react-terminal');
+    if (!terminal) return;
+
+    // a lib tambem rola para o fim 500ms depois do Enter, o que desfaria o alinhamento
+    const sentinela = terminal.lastElementChild;
+    if (sentinela) sentinela.scrollIntoView = () => {};
+
+    // os filhos do terminal seguem a ordem das linhas, entao este e o primeiro item novo
+    const primeiroNovo = terminal.children[anterior];
+    if (!primeiroNovo) {
+      terminal.scrollTop = terminal.scrollHeight;
+      return;
+    }
+    terminal.scrollTop += primeiroNovo.getBoundingClientRect().top - terminal.getBoundingClientRect().top;
+  }, [terminalLineData]);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 500);
@@ -73,31 +131,75 @@ function App() {
     if (!input) return;
 
     const handleKeyDown = (e) => {
+      // Ctrl+C: cancela a linha atual e sai do formulario de email
+      if (e.ctrlKey && e.key === 'c') {
+        if (window.getSelection().toString()) return; // nao atrapalha a copia de texto selecionado
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        setNativeInputValue(input, '');
+        setTerminalLineData(prev => [...prev, <TerminalOutput key={`ctrlc-${prev.length}`}>^C</TerminalOutput>]);
+        setPromptState({ active: false, step: 0, data: {} });
+        return;
+      }
+
+      // Ctrl+L: limpa a tela
+      if (e.ctrlKey && e.key === 'l') {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        setTerminalLineData([]);
+        return;
+      }
+
+      // Ctrl+U apaga a linha toda, Ctrl+W apaga a ultima palavra
+      if (e.ctrlKey && (e.key === 'u' || e.key === 'w')) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        setNativeInputValue(input, e.key === 'u' ? '' : input.value.replace(/\S+\s*$/, ''));
+        return;
+      }
+
       if (promptActiveRef.current) return;
 
       if (e.key === 'ArrowUp') {
         e.preventDefault();
         e.stopImmediatePropagation();
-        setHistoryIndex(prev => {
-          const history = commandHistoryRef.current;
-          const nextIndex = Math.min(prev + 1, history.length - 1);
-          if (nextIndex === prev) return prev;
-          const cmd = history[nextIndex] ?? '';
-          setNativeInputValue(input, cmd);
-          return nextIndex;
-        });
+        const history = commandHistoryRef.current;
+        const indiceAtual = historyIndexRef.current;
+        const proximoIndice = Math.min(indiceAtual + 1, history.length - 1);
+        if (proximoIndice === indiceAtual) return;
+        if (indiceAtual === -1) rascunhoRef.current = input.value;
+        setNativeInputValue(input, history[proximoIndice] ?? '');
+        setHistoryIndex(proximoIndice);
       }
 
       if (e.key === 'Tab') {
         e.preventDefault();
         e.stopImmediatePropagation();
+        // linha vazia casa com todos os nomes: dois Tabs listam tudo, como no bash
         const typed = input.value.toLowerCase().trim();
-        if (!typed) return;
         const matches = allCommandNames.filter(name => name.startsWith(typed));
         if (matches.length === 1) {
           setNativeInputValue(input, matches[0]);
+          ultimoTabRef.current = null;
         } else if (matches.length > 1) {
-          setNativeInputValue(input, getCommonPrefix(matches));
+          if (ultimoTabRef.current === typed) {
+            // segundo Tab seguido: congela a linha digitada e lista os candidatos embaixo dela
+            const linhaDigitada = input.value;
+            setTerminalLineData(prev => [
+              ...prev,
+              <TerminalInput key={`tab-linha-${prev.length}`}>{promptStringRef.current} {linhaDigitada}</TerminalInput>,
+              <TerminalOutput key={`tab-lista-${prev.length}`}>
+                <span className="lista-colunas">
+                  {matches.map(nome => <span key={nome}>{nome}</span>)}
+                </span>
+              </TerminalOutput>
+            ]);
+            ultimoTabRef.current = null;
+          } else {
+            const prefixo = getCommonPrefix(matches);
+            setNativeInputValue(input, prefixo);
+            ultimoTabRef.current = prefixo;
+          }
         }
         return;
       }
@@ -105,14 +207,12 @@ function App() {
       if (e.key === 'ArrowDown') {
         e.preventDefault();
         e.stopImmediatePropagation();
-        setHistoryIndex(prev => {
-          const history = commandHistoryRef.current;
-          const nextIndex = Math.max(prev - 1, -1);
-          if (nextIndex === prev) return prev;
-          const cmd = nextIndex === -1 ? '' : history[nextIndex] ?? '';
-          setNativeInputValue(input, cmd);
-          return nextIndex;
-        });
+        const history = commandHistoryRef.current;
+        const indiceAtual = historyIndexRef.current;
+        const proximoIndice = Math.max(indiceAtual - 1, -1);
+        if (proximoIndice === indiceAtual) return;
+        setNativeInputValue(input, proximoIndice === -1 ? rascunhoRef.current : history[proximoIndice] ?? '');
+        setHistoryIndex(proximoIndice);
       }
     };
 
@@ -165,6 +265,69 @@ function App() {
     setPromptState({ active: nextStep !== 0, step: nextStep, data: currentData });
   };
 
+  const getCommandResponse = (commandName, args) => {
+    switch (commandName) {
+      case 'sobre': return <SobreMim />;
+      case 'ajuda': return <Ajuda />;
+      case 'projetos': return <Projetos />;
+      case 'experiencias': return <Experiencias />;
+      case 'contato': return <Contato onStartEmailPrompt={startEmailPrompt} />;
+      case 'certificacoes': return <Certificacoes />;
+      case 'curriculo': return <Curriculo />;
+      case 'neofetch': return <Neofetch />;
+
+      case 'ls': {
+        // em ingles mostra o primeiro alias (about, projects...), em portugues o nome canonico
+        const emIngles = i18n.language.startsWith('en');
+        const mostrarTudo = args.some(arg => /^-[a-z]*a/.test(arg));
+        const nomes = Object.values(commandList)
+          .filter(cmd => !cmd.hidden || mostrarTudo)
+          // os escondidos ja tem nome de terminal e aparecem como dotfile
+          .map(cmd => (cmd.hidden ? `.${cmd.name}` : emIngles ? cmd.aliases[0] || cmd.name : cmd.name));
+        return (
+          <TerminalOutput>
+            <span className="lista-colunas">
+              {nomes.map(nome => <span key={nome}>{nome}</span>)}
+            </span>
+          </TerminalOutput>
+        );
+      }
+
+      case 'cd': {
+        const destino = (args[0] || '').toLowerCase();
+        if (!destino || destino === '~' || destino === '..') return <BoasVindas />;
+        const alvo = Object.values(commandList).find(cmd => cmd.name === destino || cmd.aliases.includes(destino));
+        if (!alvo || alvo.hidden) {
+          return <TerminalOutput>cd: {destino}: {t('comando.cd_erro')}</TerminalOutput>;
+        }
+        return getCommandResponse(alvo.name, []);
+      }
+
+      case 'history':
+        return (
+          <TerminalOutput>
+            {commandHistory.length === 0
+              ? t('comando.historico_vazio')
+              : [...commandHistory].reverse().map((cmd, i) => `${i + 1}  ${cmd}`).join('\n')}
+          </TerminalOutput>
+        );
+
+      case 'lang': {
+        const idioma = (args[0] || '').toLowerCase();
+        if (idioma !== 'pt' && idioma !== 'en') return <TerminalOutput>{t('comando.lang_uso')}</TerminalOutput>;
+        i18n.changeLanguage(idioma);
+        return <TerminalOutput>{t('comando.lang_alterado', { lng: idioma })}</TerminalOutput>;
+      }
+
+      case 'echo': return <TerminalOutput>{args.join(' ')}</TerminalOutput>;
+      case 'whoami': return <TerminalOutput>visitor</TerminalOutput>;
+      case 'pwd': return <TerminalOutput>/home/visitor</TerminalOutput>;
+      case 'date': return <TerminalOutput>{new Date().toLocaleString(i18n.language === 'en' ? 'en-US' : 'pt-BR')}</TerminalOutput>;
+      case 'sudo': return <TerminalOutput>visitor is not in the sudoers file. This incident will be reported.</TerminalOutput>;
+      default: return null;
+    }
+  };
+
   const handleCommandInput = (input) => {
     if (input.trim()) {
       setCommandHistory(prev => {
@@ -177,27 +340,30 @@ function App() {
     let newLines = [...terminalLineData];
     newLines.push(<TerminalInput key={`input-${terminalLineData.length}`}>{myPrompt} {input}</TerminalInput>);
 
-    const args = input.toLowerCase().trim().split(' ');
-    const userInput = args[0];
+    // Enter numa linha vazia so repete o prompt, como num terminal de verdade
+    if (!input.trim()) {
+      setTerminalLineData(newLines);
+      return;
+    }
+
+    const args = input.trim().split(/\s+/);
+    // aceita tambem a forma com ponto (.neofetch), que e como o `ls -a` lista
+    const userInput = args[0].toLowerCase().replace(/^\./, '');
     const command = Object.values(commandList).find(cmd => cmd.name === userInput || cmd.aliases.includes(userInput));
     let response;
 
     if (command) {
-      switch (command.name) {
-        case 'sobre': response = <SobreMim />; break;
-        case 'ajuda': response = <Ajuda />; break;
-        case 'projetos': response = <Projetos />; break;
-        case 'experiencias': response = <Experiencias />; break;
-        case 'contato': response = <Contato onStartEmailPrompt={startEmailPrompt} />; break;
-        case 'certificacoes': response = <Certificacoes />; break;
-        case 'curriculo': response = <Curriculo />; break;
-        case 'limpar': setTerminalLineData([]); return;
-        default: break;
+      if (command.name === 'limpar') {
+        setTerminalLineData([]);
+        return;
       }
+      response = getCommandResponse(command.name, args.slice(1));
     } else {
+      const sugestao = findSuggestion(userInput);
       response = (
         <TerminalOutput>
           {t("comando.nao_reconhecido")} "{userInput}"<br />
+          {sugestao && <>{t("comando.sugestao")} "{sugestao}"?<br /></>}
           {t("comando.ver_ajuda")}
         </TerminalOutput>
       );
@@ -222,6 +388,8 @@ function App() {
 
   const myPrompt = promptState.active ? "> " : (isMobile ? '' : "visitor@portfolio:~$");
   const terminalTitle = isMobile ? '' : 'Portfolio terminal';
+
+  promptStringRef.current = myPrompt;
 
   return (
     <div className="container" ref={containerRef}>
