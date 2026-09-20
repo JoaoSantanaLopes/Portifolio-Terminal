@@ -135,12 +135,6 @@
   border-radius: 9999px;
   font-size: 0.8rem;
   font-weight: 600;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.certification-tag:hover {
-  background-color: #4fc3f7;
-  color: #1a202c;
 }
 
 .certification-link {
